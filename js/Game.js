@@ -31,9 +31,26 @@
         return this.phrases[randomNumber];
     }
     handleInteraction(e){
-        console.log(e.target);         
+        // grab text content of targeted letter
+        const clickedLetter = e.target.textContent;
+        // grab the active phrase
+        const activePhrase = this.activePhrase.phrase;
+        // pass the clickedLetter & activePhrase to checkLetter method in phrase.js
+        const letterChecker = this.activePhrase.checkLetter(clickedLetter, activePhrase);
+        if (letterChecker === -1 ) {
+            e.target.classList.add('wrong');
+            e.target.style.cursor = 'default';
+            e.target.setAttribute('disabled', 'disabled');
+        } else {
+            e.target.classList.add('chosen');
+            e.target.style.cursor = 'default';
+            e.target.setAttribute('disabled', 'disabled');
+            this.activePhrase.showMatchedLetter(clickedLetter);
+        }
+        console.log(letterChecker);     
     }
     removeLife(){
+        const lives = document.querySelectorAll(".tries");
 
     }
     checkForWin(){
