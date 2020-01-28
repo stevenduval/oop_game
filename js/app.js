@@ -13,8 +13,7 @@ startGame.addEventListener('click', () => {
 
 gameKeys.addEventListener('click', (e) => {
     if (e.target.tagName === 'BUTTON') {
-    newGame.handleInteraction();   
-    console.log(e.target);
+    newGame.handleInteraction(e);
     }
 });
 

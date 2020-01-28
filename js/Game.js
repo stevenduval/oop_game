@@ -30,8 +30,8 @@
         // return random phrase back to the startGame method where it was called
         return this.phrases[randomNumber];
     }
-    handleInteraction(){
-        console.log('test');        
+    handleInteraction(e){
+        console.log(e.target);        
     }
     removeLife(){
 
