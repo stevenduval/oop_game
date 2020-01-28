@@ -16,4 +16,4 @@ gameKeys.addEventListener('click', (e) => {
     newGame.handleInteraction(e);
     }
 });
-
+ 

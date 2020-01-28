@@ -15,7 +15,7 @@
                 } else { 
                     addLetters.insertAdjacentHTML('beforeend', `<li class="space"> </li>`);
                 }
-            })
+            }) 
     }
     checkLetter(){
 

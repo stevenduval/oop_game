@@ -31,7 +31,7 @@
         return this.phrases[randomNumber];
     }
     handleInteraction(e){
-        console.log(e.target);        
+        console.log(e.target);         
     }
     removeLife(){
 
