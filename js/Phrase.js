@@ -6,8 +6,8 @@
     constructor(phrase) {
         this.phrase = phrase.toLowerCase();
     }
-    addPhraseToDisplay() {
-
+    addPhraseToDisplay(phrase) {
+        console.log(phrase);
     }
     checkLetter(){
 
