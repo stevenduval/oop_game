@@ -20,14 +20,13 @@
                 }
             }) 
     }
-    checkLetter(clickedLetter, activePhrase){
-        // check to see if the clickedLetter is in the activePhrase
-        return activePhrase.indexOf(clickedLetter);
+    checkLetter(enteredLetter, activePhrase){
+        // check to see if the enteredLetter is in the activePhrase
+        return activePhrase.indexOf(enteredLetter);
     }
-    showMatchedLetter(clickedLetter){
-        const matchedLetter = document.querySelectorAll(`.hide.letter.${clickedLetter}`);
-        console.log(matchedLetter);
-        Array.from(matchedLetter)
+    showMatchedLetter(enteredLetter){
+        // create an array of the letters on the screen and show them
+        Array.from(document.querySelectorAll(`.hide.letter.${enteredLetter}`))
             .forEach(match => match.className = "show");
         
     }
