@@ -51,6 +51,7 @@
                     key.setAttribute('disabled', 'disabled');
                     // send letter to showMatchedLetter method in Phrase object
                     this.activePhrase.showMatchedLetter(e);
+                    this.checkForWin();
                 }
             });  
     }
@@ -62,24 +63,39 @@
         // change the hearts src to lost heart image
         lives[this.missed-1].setAttribute('src', 'images/lostHeart.png');
         // if missed qty is 5 end the game
-        if (this.missed === 5) { this.gameOver('lost'); }
+        if (this.missed === 5) { this.gameOver('lose'); }
     }
     checkForWin(){
-
+        // grab all of the letters that have a .show class
+        const matchedLetters = document.querySelectorAll('.show');
+        // grab the active phrase and replace all of the spaces to get accurate length
+        const activePhrase = this.activePhrase.phrase.replace(/ /g, "");
+        // if matchedLetters = activePhrase length then send win message to gameOver method
+        if (matchedLetters.length === activePhrase.length) { this.gameOver('win')};
     }
     gameOver(gameStatus){
         // get overlay
         const overlay = document.querySelector('#overlay');
-        // get button
+        // get reset button
         const button = document.querySelector('#btn__reset');
-
-
-
-        if (gameStatus === 'lost') {
-            overlay.className = 'lose';
-            
+        // get h1 to store game message
+        const gameMessage = document.querySelector('#game-over-message');
+        
+        //if gameStatus is equal to win
+        if (gameStatus === 'win') {
+            overlay.className = 'win';
+            gameMessage.innerHTML = 'Congrats!  Want to play again? <br><br> <img src="images/homerhappy.gif" height="375">';
         }
-
+        //if gameStatus is equal to lose
+        if (gameStatus === 'lose') {
+            overlay.className = 'lose';
+            gameMessage.innerHTML = 'Better luck next time! <br><br> <img src="images/homer_disappear.gif">';
+        }
+        
+        // remove phraseHunter text
+        document.querySelector('.title').innerText= " ";
+        // change button text to 'Play Again?'
+        button.innerText = 'Play Again?';
         // remove style attribute from overlay
         overlay.removeAttribute('style');
         // clear phrase
