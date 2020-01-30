@@ -51,6 +51,7 @@
                     key.setAttribute('disabled', 'disabled');
                     // send letter to showMatchedLetter method in Phrase object
                     this.activePhrase.showMatchedLetter(e);
+                    // check if win
                     this.checkForWin();
                 }
             });  
@@ -91,7 +92,7 @@
             overlay.className = 'lose';
             gameMessage.innerHTML = 'Better luck next time! <br><br> <img src="images/homer_disappear.gif">';
         }
-        
+
         // remove phraseHunter text
         document.querySelector('.title').innerText= " ";
         // change button text to 'Play Again?'
