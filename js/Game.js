@@ -31,6 +31,8 @@
         return this.phrases[randomNumber];
     }
     handleInteraction(e){
+        // check if overlay is hidden
+        const overlay = document.querySelector('#overlay').hasAttribute('style');
         // grab the active phrase
         const activePhrase = this.activePhrase.phrase;
         // pass the clicked/typed letter & activePhrase to checkLetter method in phrase.js
@@ -38,14 +40,14 @@
         // create an array for all the keys on the screen will be looped through when a key is clicked or typed
         Array.from(document.querySelectorAll('.keyrow > .key'))
             .forEach(key => {
-                // check if key is not in phrase
-                if (letterChecker === -1 && e === key.textContent && !key.hasAttribute('disabled')) {
+                // if key is not in phrase and is equal to current key and not disabled and the overlay is not present
+                if (letterChecker === -1 && e === key.textContent && !key.hasAttribute('disabled') && overlay) {
                     key.classList.add('wrong');
                     key.style.cursor = 'default';
                     key.setAttribute('disabled', 'disabled');
                     this.removeLife();
-                // check if key is in phrase and find its key match in the array
-                } else if (letterChecker >= 0 && e === key.textContent && !key.hasAttribute('disabled')) {
+                // if key is in phrase and is equal to current key andis not disabled and the overlay is not present
+                } else if (letterChecker >= 0 && e === key.textContent && !key.hasAttribute('disabled') && overlay) {
                     key.classList.add('chosen');
                     key.style.cursor = 'default';
                     key.setAttribute('disabled', 'disabled');
