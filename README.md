@@ -29,6 +29,10 @@ Clone the project - (https://github.com/stevenduval/oop_game) -  and open up the
 * **Steven Duval** - *JavaScript code*
 * **TreeHouse** - *HTML & CSS code* - (https://teamtreehouse.com)
 
+### Extras
+
+Added homer simpson image to win or loose screen.
+
 ## License
 
 This project is licensed as free for non-commercial use.
