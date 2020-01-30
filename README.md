@@ -3,7 +3,7 @@
 Object Oriented Program Game
 
 ## Getting Started
-
+Are you ready to play the game?!?!?!  Once you press start game try your luck out and guess the phrase, either by pressing a key or selecting a key.  I will give you five chances to do so before I call it quits!  Will you make Homer happy or sad?  Your choice....
 
 
 ### Installing
