@@ -11,6 +11,9 @@ I will give you five chances to do so before I call it quits!
 
 Will you make Homer happy or sad?  Your choice....
 
+### Extras
+
+Added homer simpson image to win or loose screen.
 
 ### Installing
 
@@ -28,10 +31,6 @@ Clone the project - (https://github.com/stevenduval/oop_game) -  and open up the
 
 * **Steven Duval** - *JavaScript code*
 * **TreeHouse** - *HTML & CSS code* - (https://teamtreehouse.com)
-
-### Extras
-
-Added homer simpson image to win or loose screen.
 
 ## License
 
