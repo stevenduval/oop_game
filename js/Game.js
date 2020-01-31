@@ -44,8 +44,6 @@
                     key.style.cursor = 'default';
                     key.setAttribute('disabled', 'disabled');
                     this.removeLife();
-                    // check if game over
-                    if (this.missed === 5) { this.gameOver('lose') };
                 // if key is in phrase and is equal to current key and is not disabled and the overlay is not present
                 } else if (letterChecker >= 0 && e === key.textContent && !key.hasAttribute('disabled') && overlay) {
                     key.classList.add('chosen');
@@ -65,8 +63,8 @@
         this.missed += 1;
         // change the hearts src to lost heart image
         lives[this.missed-1].setAttribute('src', 'images/lostHeart.png');
-        // return lose to where it is called if missed equals 5
-        if (this.missed === 5) { return 'lose'; }
+         // check if game over
+         if (this.missed === 5) { this.gameOver('lose') };
     }
     checkForWin(){
         // grab all of the letters that have a .show class
