@@ -17,12 +17,10 @@
         overlay.style.display = 'none';
         // for each of the items in the gamePhrase array above push it to the phrases property as a phrase object
         gamePhrases.forEach(phrase => this.phrases.push(new Phrase(phrase)));
-        // call the getRandomPhrase method
-        let returnPhrase = this.getRandomPhrase(); 
-        // set activePhrase to the returned value
-        this.activePhrase = returnPhrase;
+        // call the getRandomPhrase method & set active phrase value
+        this.activePhrase = this.getRandomPhrase(); 
         // pass to addPhraseToDisplay in phrase.js
-        returnPhrase.addPhraseToDisplay(returnPhrase);
+        this.activePhrase.addPhraseToDisplay(this.activePhrase);
     }
     getRandomPhrase(){
         // generate a randomNumber 0-4
@@ -46,7 +44,9 @@
                     key.style.cursor = 'default';
                     key.setAttribute('disabled', 'disabled');
                     this.removeLife();
-                // if key is in phrase and is equal to current key andis not disabled and the overlay is not present
+                    // check if game over
+                    if (this.missed === 5) { this.gameOver('lose') };
+                // if key is in phrase and is equal to current key and is not disabled and the overlay is not present
                 } else if (letterChecker >= 0 && e === key.textContent && !key.hasAttribute('disabled') && overlay) {
                     key.classList.add('chosen');
                     key.style.cursor = 'default';
@@ -54,7 +54,7 @@
                     // send letter to showMatchedLetter method in Phrase object
                     this.activePhrase.showMatchedLetter(e);
                     // check if win
-                    this.checkForWin();
+                    if (this.checkForWin() === 'win') { this.gameOver('win');}
                 }
             });  
     }
@@ -65,16 +65,16 @@
         this.missed += 1;
         // change the hearts src to lost heart image
         lives[this.missed-1].setAttribute('src', 'images/lostHeart.png');
-        // if missed qty is 5 end the game
-        if (this.missed === 5) { this.gameOver('lose'); }
+        // return lose to where it is called if missed equals 5
+        if (this.missed === 5) { return 'lose'; }
     }
     checkForWin(){
         // grab all of the letters that have a .show class
         const matchedLetters = document.querySelectorAll('.show');
         // grab the active phrase and replace all of the spaces to get accurate length
         const activePhrase = this.activePhrase.phrase.replace(/ /g, "");
-        // if matchedLetters = activePhrase length then send win message to gameOver method
-        if (matchedLetters.length === activePhrase.length) { this.gameOver('win')};
+        // if matchedLetters = activePhrase then return win to where method was called
+        if (matchedLetters.length === activePhrase.length) { return 'win'; }
     }
     gameOver(gameStatus){
         // get overlay
